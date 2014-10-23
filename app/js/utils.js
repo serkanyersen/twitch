@@ -84,8 +84,8 @@
      * @return {String}          Parsed template
      */
     utils.parseTemplate = function(template, data) {
-        var html = document.getElementById('stream-item').innerHTML || "";
-        return template.replace(/\{\{\s*(.*?)\s*\}\}/gim, function(all, match){
+        var html = document.getElementById(template).innerHTML || "";
+        return html.replace(/\{\{\s*(.*?)\s*\}\}/gim, function(all, match){
             return data[match] || "";
         });
     };
