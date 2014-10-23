@@ -12,22 +12,27 @@ module.exports = function(grunt) {
             }
         },
 
+        concat: {
+            development: {
+                files: [{
+                    dest: 'app/build/app.js',
+                    src: [
+                        'app/js/**/!(app).js',
+                        'app/js/app.js'
+                    ]
+                }]
+            }
+        },
+
         watch: {
-            configFiles: {
-                files: [ 'Gruntfile.js' ],
-                options: {
-                    reload: true
-                }
-            },
-            livereload: {
+            js: {
                 files: [
-                    'app/**/*.sass',
-                    'app/**/*.html',
-                    'app/**/*.js'
+                    'app/js/*.js'
                 ],
+                tasks: ['concat:development'],
                 options: {
                     spawn: false,
-                    livereload: true
+                    interrupt: true
                 }
             },
             sass: {
@@ -38,11 +43,23 @@ module.exports = function(grunt) {
                 options: {
                     spawn: false
                 }
+            },
+            livereload: {
+                files: [
+                    'app/style/*.sass',
+                    'app/*.html',
+                    'app/js/*.js'
+                ],
+                options: {
+                    spawn: false,
+                    interrupt: true,
+                    livereload: true
+                }
             }
         },
 
         connect: {
-            server: {
+            development: {
                 options: {
                     port: 8000,
                     hostname: 'localhost',
@@ -55,11 +72,12 @@ module.exports = function(grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     grunt.registerTask('server', function (spec) {
 
-        grunt.task.run(['connect:server', 'sass:development', 'watch']);
+        grunt.task.run(['connect:development', 'sass:development', 'concat:development', 'watch']);
 
     });
 
