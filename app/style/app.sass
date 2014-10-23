@@ -1,24 +1,27 @@
 $border: 1px solid #ccc
+$font-face: "Helvetica Neue", Helvetica, Arial, sans-serif
+$font-size: 12px
+$main-background-color: #fafafa
+$content-padding: 10px
 
 body
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-  font-size: 12px
+  font-family: $font-face
+  font-size: $font-size
 
 .main-view
   width: 80%
   margin: 0 auto
   margin-top: 20px
   border: $border
-  background: #fafafa
+  background: $main-background-color
 
 .search-bar
-  padding: 10px
+  padding: $content-padding
   border-bottom: $border
-
 
 .result-details
   @extend .clearfix
-  padding: 10px
+  padding: $content-padding
 
 .total
   float: left
@@ -30,5 +33,5 @@ body
   text-align: right
 
 .results
-  padding: 10px
+  padding: $content-padding
   padding-top: 0
