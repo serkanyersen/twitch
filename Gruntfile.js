@@ -19,6 +19,17 @@ module.exports = function(grunt) {
                     reload: true
                 }
             },
+            livereload: {
+                files: [
+                    'app/**/*.sass',
+                    'app/**/*.html',
+                    'app/**/*.js'
+                ],
+                options: {
+                    spawn: false,
+                    livereload: true
+                }
+            },
             sass: {
                 files: [
                     'app/**/*.sass'
@@ -35,6 +46,7 @@ module.exports = function(grunt) {
                 options: {
                     port: 8000,
                     hostname: 'localhost',
+                    livereload: true,
                     base: 'app/'
                 }
             }
