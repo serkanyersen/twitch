@@ -1,0 +1,11 @@
+{
+  "name": "twitch-search",
+  "private": true,
+  "description": "Searches Twitch",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt-contrib-sass": "~0.7.3",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-connect": "~0.8.0"
+  }
+}
