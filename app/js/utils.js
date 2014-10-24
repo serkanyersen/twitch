@@ -1,9 +1,10 @@
 (function(global) {
+
     "use strict";
 
-    var base = 'https://api.twitch.tv/kraken/search/streams',
-        utils = {},
-        hash = {};
+    var base = 'https://api.twitch.tv/kraken/search/streams', // Twitch api url
+        utils = {}, // utility object
+        hash = {};  // Storage for url hash
 
     /**
      * Run when document is loaded and ready
@@ -46,6 +47,12 @@
         return serialized.join('&');
     };
 
+    /**
+     * Converts given string to an object, memoizes the
+     * results so that it doesn't have to recalculate each time
+     * @param  {String} Query to de-serialize
+     * @return {Object} Dictionary out of given string
+     */
     utils.deserialize = (function() {
         var memoize = {};
 
@@ -117,11 +124,20 @@
         });
     };
 
+    /**
+     * Reads current hash and converts it into an object
+     * @return {[type]} [description]
+     */
     utils.readHash = function() {
         hash = this.deserialize(location.hash.replace(/^./, ''));
         return hash;
     };
 
+    /**
+     * Adds a new property to current hash
+     * @param {String} key   Key for the value
+     * @param {String} value Value to be stored
+     */
     utils.setHash = function(key, value) {
         if (value === null) {
             delete hash[key];
@@ -131,9 +147,15 @@
         location.hash = this.serialize(hash);
     };
 
+    /**
+     * Gets requested value from current hash
+     * @param  {String} key          Name of the value you want
+     * @param  {Mixed} defaultValue a replacement value if it cannot be found
+     * @return {String|Null}              Value that was stored in hash or null
+     */
     utils.getHash = function(key, defaultValue) {
         var hashObject = this.deserialize(location.hash.replace(/^./, ''));
-        return hashObject[key] || defaultValue;
+        return hashObject[key] || defaultValue || null;
     };
 
     global.utils = utils;
