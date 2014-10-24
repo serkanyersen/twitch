@@ -5,7 +5,7 @@
     var app = {},
         resultsPerPage = 10;
 
-    app.handleSearch = function() {
+    app.handleHashValue = function() {
         var query = utils.getHash('query');
         if (!query) {
             utils.$('.results').innerHTML = '';
