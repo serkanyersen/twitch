@@ -1,0 +1,48 @@
+.stream-item
+  list-style: none
+  padding: $content-padding
+  @extend .clearfix
+  margin: 10px
+  position: relative
+
+  .preview-image
+    float: left
+    padding-right: $content-padding
+    width: 160px
+    height: 100px
+
+  .logo-image
+    width: 40px
+    height: 40px
+    position: absolute
+    left: 125px
+    bottom: 5px
+    box-shadow: 0 0 0 3px #fff, 0 0 1px 3px #777
+    background: #000
+
+  .stream-link
+    margin-left: 165px
+    display: block
+    text-decoration: none
+    color: inherit
+
+  .stream-title
+    font-weight: bold
+    font-size: 18px
+    padding-bottom: 5px
+    border-bottom: $border
+    margin-bottom: 5px
+
+  .stream-details
+    font-size: 12px
+    color: #999
+
+  .viewer-count
+    background: url(../images/eye.png) no-repeat left center
+    padding-left: 20px
+    float: right
+
+  .stream-description
+    padding-top: 10px
+    text-overflow: ellipsis
+    overflow: hidden

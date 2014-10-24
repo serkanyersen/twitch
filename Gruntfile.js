@@ -46,7 +46,7 @@ module.exports = function(grunt) {
             },
             livereload: {
                 files: [
-                    'app/style/*.sass',
+                    'app/style/**/*.sass',
                     'app/*.html',
                     'app/js/*.js'
                 ],

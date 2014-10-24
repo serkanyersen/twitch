@@ -1,0 +1,21 @@
+.button
+  padding: 4px 15px
+  border: 1px solid $button-border-color
+  background: $button-background
+  outline: none
+  color: $button-text-color
+
+  &:hover
+    background: darken($button-background, 10%)
+    border: 1px solid darken($button-border-color, 10%)
+
+  &:active
+    background: darken($button-background, 20%)
+    border: 1px solid darken($button-border-color, 20%)
+
+  &:disabled
+    opacity: 0.6
+
+    &:hover, &:active
+      background: $button-background
+      border: 1px solid $button-border-color

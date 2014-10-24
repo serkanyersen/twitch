@@ -1,0 +1,23 @@
+.result-details
+  @extend .clearfix
+  padding: $content-padding 1px
+  padding-bottom: 0
+
+  .total
+    float: left
+    width: 50%
+
+  .pagination
+    float: left
+    width: 50%
+    text-align: right
+
+  .previous-page, .next-page
+    @extend .button
+    padding: 2px 5px 2px 5px
+    img
+      width: 16px
+      float: left
+
+  .page-status
+    font-size: 15px
