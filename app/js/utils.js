@@ -151,11 +151,11 @@
      * Gets requested value from current hash
      * @param  {String} key          Name of the value you want
      * @param  {Mixed} defaultValue a replacement value if it cannot be found
-     * @return {String|Null}              Value that was stored in hash or null
+     * @return {String|Undefined}              Value that was stored in hash or undefined
      */
     utils.getHash = function(key, defaultValue) {
         var hashObject = this.deserialize(location.hash.replace(/^./, ''));
-        return hashObject[key] || defaultValue || null;
+        return hashObject[key] || defaultValue;
     };
 
     global.utils = utils;

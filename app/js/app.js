@@ -92,7 +92,7 @@
         utils.$('.total').innerHTML = total + ' results';
 
         // Show how many pages are there and which page we are on.
-        utils.$('.page-status').innerHTML = (currentPage+1) + '/' + totalPage;
+        utils.$('.page-status').innerHTML = (currentPage + 1) + '/' + totalPage;
     };
 
     /**

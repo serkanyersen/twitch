@@ -16,33 +16,46 @@
 <body>
 
   <div class="main-view">
+
+    <!-- Logo and headline -->
     <div class="header">
       <img src="images/logo.png" height="40" align="left" alt="Twitch"> Stream Search
     </div>
+
+    <!-- Search tools -->
     <div class="search-bar">
+
+      <!-- Search form -->
       <form action="#" method="GET" class="search-form">
         <input type="text" name="query" placeholder="Search Streams" class="search-input">
         <button class="search-button">Search</button>
       </form>
+
+      <!-- Show pagination and total of results -->
       <div class="result-details">
-        <div class="total">&nbsp;</div>
+        <div class="total">0 results</div>
         <div class="pagination">
           <button class="previous-page" disabled="disabled">
             <img src="images/back.png" alt="Previous">
           </button>
-          <span class="page-status">1/1</span>
+          <span class="page-status">1/0</span>
           <button class="next-page" disabled="disabled">
             <img src="images/forward.png" alt="Next">
           </button>
         </div>
       </div>
+
+      <!-- Loading gif -->
       <img src="images/loading.gif" class="loading-gif hidden">
     </div>
+
+    <!-- Display results in a list -->
     <div class="results-container">
       <ul class="results"></ul>
     </div>
   </div>
 
+  <!-- Template for results -->
   <script type="text/template" id="stream-item">
     <li class="stream-item">
       <img src="{{ preview }}" alt="Preview Image" class="preview-image">
@@ -58,6 +71,7 @@
     </li>
   </script>
 
-  <script src="build/app.js"></script>
+  <!-- Scripts at the bottom -->
+  <script type="text/javascript" src="build/app.js"></script>
 </body>
 </html>
