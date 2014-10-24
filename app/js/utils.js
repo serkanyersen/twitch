@@ -48,27 +48,20 @@
     };
 
     /**
-     * Converts given string to an object, memoizes the
-     * results so that it doesn't have to recalculate each time
+     * Converts given string to an object
      * @param  {String} Query to de-serialize
      * @return {Object} Dictionary out of given string
      */
-    utils.deserialize = (function() {
-        var memoize = {};
-
-        return function(string) {
-            if (!memoize[string]) {
-                memoize[string] = {};
-                string.split('&').forEach(function(piece) {
-                    var pair = piece.split('=');
-                    if (pair[0]) {
-                        memoize[string][pair[0]] = decodeURIComponent(pair[1]);
-                    }
-                });
+    utils.deserialize = function(string) {
+        var obj = {};
+        string.split('&').forEach(function(piece) {
+            var pair = piece.split('=');
+            if (pair[0]) {
+                obj[pair[0]] = decodeURIComponent(pair[1]);
             }
-            return memoize[string];
-        };
-    })();
+        });
+        return obj;
+    };
 
     /**
      * Ignores repetitive calls for a function, only runs after given time
@@ -154,7 +147,7 @@
      * @return {String|Undefined}              Value that was stored in hash or undefined
      */
     utils.getHash = function(key, defaultValue) {
-        var hashObject = this.deserialize(location.hash.replace(/^./, ''));
+        var hashObject = this.readHash();
         return hashObject[key] || defaultValue;
     };
 
