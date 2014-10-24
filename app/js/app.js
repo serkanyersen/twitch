@@ -68,7 +68,7 @@
      */
     app.handlePagination = function(total) {
         // Get the current page we are viewing
-        var currentPage = parseInt(utils.getHash('page', 0), 10),
+        var currentPage = +utils.getHash('page', 0),
             // How mane pages are there?
             totalPage = Math.ceil(total / resultsPerPage);
 

@@ -11,12 +11,12 @@ utils.ready(function() {
 
     // When previous button is clicked, decrease page value by one
     utils.$('.previous-page').addEventListener('click', function() {
-        utils.setHash('page', parseInt(utils.getHash('page', 0), 10) - 1);
+        utils.setHash('page', utils.getHash('page', 0) - 1);
     });
 
     // When next button is clicked, increase page value by one
     utils.$('.next-page').addEventListener('click', function() {
-        utils.setHash('page', parseInt(utils.getHash('page', 0), 10) + 1);
+        utils.setHash('page', +utils.getHash('page', 0) + 1);
     });
 
     // Update application according to hash value
