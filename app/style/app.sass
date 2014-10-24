@@ -2,6 +2,7 @@ $border: 1px solid #ddd
 $font-face: "Helvetica Neue", Helvetica, Arial, sans-serif
 $font-size: 100%
 $main-background-color: #fff
+$header-background: #f5f5f5
 $background: #1f1f1f
 $content-padding: 10px
 
@@ -18,8 +19,31 @@ body
   font-size: 20px
   line-height: 40px
   padding-top: $content-padding
+  background: $header-background
   img
     margin-left: 5px
+
+.button
+  padding: 4px 15px
+  border: 1px solid #ccc
+  background: #f5f5f5
+  outline: none
+  color: #444
+
+  &:hover
+    background: darken(#f5f5f5, 10%)
+    border: 1px solid darken(#ccc, 10%)
+
+  &:active
+    background: darken(#f5f5f5, 20%)
+    border: 1px solid darken(#ccc, 20%)
+
+  &:disabled
+    opacity: 0.6
+
+    &:hover, &:active
+      background: #f5f5f5
+      border: 1px solid #ccc
 
 .main-view
   width: 80%
@@ -34,6 +58,7 @@ body
 
 .search-bar
   padding: $content-padding
+  background: $header-background
   border-bottom: $border
   position: relative
 
@@ -43,27 +68,16 @@ body
     font-size: 16px
 
   .search-button
+    @extend .button
+    font-size: 20px
     position: absolute
     right: 15px
     top: 15px
-    font-size: 20px
-    padding: 4px 15px
-    border: 1px solid #ccc
-    background: #f5f5f5
-    outline: none
-    color: #444
-
-    &:hover
-      background: darken(#f5f5f5, 10%)
-      border: 1px solid darken(#ccc, 10%)
-
-    &:active
-      background: darken(#f5f5f5, 20%)
-      border: 1px solid darken(#ccc, 20%)
 
 .result-details
   @extend .clearfix
-  padding: $content-padding
+  padding: $content-padding 1px
+  padding-bottom: 0
 
 .total
   float: left
@@ -139,3 +153,13 @@ body
 
 .hidden
   display: none
+
+.previous-page, .next-page
+  @extend .button
+  padding: 2px 5px 2px 5px
+  img
+    width: 16px
+    float: left
+
+.page-status
+  font-size: 15px

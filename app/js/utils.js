@@ -54,7 +54,9 @@
                 memoize[string] = {};
                 string.split('&').forEach(function(piece) {
                     var pair = piece.split('=');
-                    memoize[string][pair[0]] = decodeURIComponent(pair[1]);
+                    if (pair[0]) {
+                        memoize[string][pair[0]] = decodeURIComponent(pair[1]);
+                    }
                 });
             }
             return memoize[string];
@@ -115,8 +117,17 @@
         });
     };
 
+    utils.readHash = function() {
+        hash = this.deserialize(location.hash.replace(/^./, ''));
+        return hash;
+    };
+
     utils.setHash = function(key, value) {
-        hash[key] = value;
+        if (value === null) {
+            delete hash[key];
+        } else {
+            hash[key] = value;
+        }
         location.hash = this.serialize(hash);
     };
 

@@ -17,25 +17,25 @@
 
   <div class="main-view">
     <div class="header">
-      <img src="images/logo.png" height="40" align="left"> Stream Search
+      <img src="images/logo.png" height="40" align="left" alt="Twitch"> Stream Search
     </div>
     <div class="search-bar">
       <form action="#" method="GET" class="search-form">
         <input type="text" name="query" placeholder="Search Streams" class="search-input">
         <button class="search-button">Search</button>
-        <div class="result-details">
-          <div class="total">&nbsp;</div>
-          <div class="pagination">
-            <button class="previous-page" disabled="disabled">
-              <img src="images/back.png" alt="Previous">
-            </button>
-            <span class="page-status">1/1</span>
-            <button class="next-page" disabled="disabled">
-              <img src="images/forward.png" alt="Next">
-            </button>
-          </div>
-        </div>
       </form>
+      <div class="result-details">
+        <div class="total">&nbsp;</div>
+        <div class="pagination">
+          <button class="previous-page" disabled="disabled">
+            <img src="images/back.png" alt="Previous">
+          </button>
+          <span class="page-status">1/1</span>
+          <button class="next-page" disabled="disabled">
+            <img src="images/forward.png" alt="Next">
+          </button>
+        </div>
+      </div>
       <img src="images/loading.gif" class="loading-gif hidden">
     </div>
     <div class="results-container">

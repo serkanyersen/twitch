@@ -1,12 +1,15 @@
 (function(global) {
 
+    "use strict";
+
     var app = {},
         resultsPerPage = 10;
 
-    app.onHashChange = function() {
+    app.handleSearch = function() {
         var query = utils.getHash('query');
-
         if (!query) {
+            utils.$('.results').innerHTML = '';
+            this.handlePagination(0);
             return;
         }
 
@@ -55,6 +58,7 @@
             utils.$('.previous-page').setAttribute('disabled', 'disabled');
         }
 
+        utils.$('.total').innerHTML = total + ' results';
         utils.$('.page-status').innerHTML = (currentPage+1) + '/' + totalPage;
     };
 
@@ -62,7 +66,7 @@
         var resultsList = utils.$('.results');
 
         utils.$('.loading-gif').classList.add('hidden');
-        utils.$('.total').innerHTML = result._total + ' results';
+
         if (result._total > 0) {
             resultsList.innerHTML = this.renderStreams(result.streams);
         } else {
