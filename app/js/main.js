@@ -2,9 +2,6 @@ utils.ready(function() {
 
     "use strict";
 
-    // Get what's on the current hash
-    utils.readHash();
-
     // When search form is submitted, set the query in the hash
     utils.$('.search-form').addEventListener('submit', function(e) {
         e.preventDefault();

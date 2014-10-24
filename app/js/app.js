@@ -13,11 +13,15 @@
      * this function will clean the results.
      */
     app.handleHashValue = function() {
+        // Get what's on the current hash
+        utils.readHash();
+
         var query = utils.getHash('query');
 
         // If no query is set, just reset results page
         if (!query) {
             utils.$('.results').innerHTML = '';
+            utils.$('.search-input').value = '';
             this.handlePagination(0);
             return;
         }
