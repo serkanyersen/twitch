@@ -24,15 +24,6 @@
     };
 
     /**
-     * Document query selector shorthand
-     * @param  {String} selector CSS Selector
-     * @return {Array}          Array of results, empty array of none
-     */
-    utils.$$ = function(selector) {
-        return document.querySelectorAll(selector);
-    };
-
-    /**
      * Converts given object to a query string
      * @param  {Object} object dictionary that you want to
      *                         turn into query string
@@ -61,23 +52,6 @@
             }
         });
         return obj;
-    };
-
-    /**
-     * Ignores repetitive calls for a function, only runs after given time
-     * @param  {Function} func  function to debounce
-     * @param  {Number} delay delay amount in milliseconds
-     * @return {Function}       debounced function
-     */
-    utils.debounce = function(func, delay) {
-        var debounceTimer = false;
-        return function() {
-            var args = arguments;
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(function(){
-                func.apply(this, args);
-            }, delay);
-        };
     };
 
     /**
