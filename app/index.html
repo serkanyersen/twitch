@@ -58,8 +58,10 @@
   <!-- Template for results -->
   <script type="text/template" id="stream-item">
     <li class="stream-item">
-      <img src="{{ preview }}" alt="Preview Image" class="preview-image">
-      <img src="{{ logo }}" alt="Logo" class="logo-image">
+      <div class="image-container">
+        <img src="{{ preview }}" alt="Preview Image" class="preview-image">
+        <img src="{{ logo }}" alt="Logo" class="logo-image">
+      </div>
       <a href="{{ link }}" class="stream-link">
         <h3 class="stream-title">{{ displayName }}</h3>
         <div class="stream-details">
