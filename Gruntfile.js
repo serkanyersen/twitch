@@ -17,8 +17,8 @@ module.exports = function(grunt) {
                 files: [{
                     dest: 'app/build/app.js',
                     src: [
-                        'app/js/**/!(app).js',
-                        'app/js/app.js'
+                        'app/js/**/!(main).js',
+                        'app/js/main.js'
                     ]
                 }]
             }
@@ -78,6 +78,12 @@ module.exports = function(grunt) {
     grunt.registerTask('server', function (spec) {
 
         grunt.task.run(['connect:development', 'sass:development', 'concat:development', 'watch']);
+
+    });
+
+    grunt.registerTask('build', function (spec) {
+
+        grunt.task.run(['sass:development', 'concat:development']);
 
     });
 

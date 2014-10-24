@@ -2,7 +2,8 @@
     "use strict";
 
     var base = 'https://api.twitch.tv/kraken/search/streams',
-        utils = {};
+        utils = {},
+        hash = {};
 
     /**
      * Run when document is loaded and ready
@@ -15,9 +16,18 @@
     /**
      * Document query selector shorthand
      * @param  {String} selector CSS Selector
-     * @return {Array}          Array of results, empty array of none
+     * @return {DOMElement}     Element that matched or false
      */
     utils.$ = function(selector) {
+        return document.querySelector(selector);
+    };
+
+    /**
+     * Document query selector shorthand
+     * @param  {String} selector CSS Selector
+     * @return {Array}          Array of results, empty array of none
+     */
+    utils.$$ = function(selector) {
         return document.querySelectorAll(selector);
     };
 
@@ -35,6 +45,21 @@
 
         return serialized.join('&');
     };
+
+    utils.deserialize = (function() {
+        var memoize = {};
+
+        return function(string) {
+            if (!memoize[string]) {
+                memoize[string] = {};
+                string.split('&').forEach(function(piece) {
+                    var pair = piece.split('=');
+                    memoize[string][pair[0]] = decodeURIComponent(pair[1]);
+                });
+            }
+            return memoize[string];
+        };
+    })();
 
     /**
      * Ignores repetitive calls for a function, only runs after given time
@@ -84,10 +109,20 @@
      * @return {String}          Parsed template
      */
     utils.parseTemplate = function(template, data) {
-        var html = document.getElementById(template).innerHTML || "";
+        var html = this.$(template).innerHTML || "";
         return html.replace(/\{\{\s*(.*?)\s*\}\}/gim, function(all, match){
             return data[match] || "";
         });
+    };
+
+    utils.setHash = function(key, value) {
+        hash[key] = value;
+        location.hash = this.serialize(hash);
+    };
+
+    utils.getHash = function(key, defaultValue) {
+        var hashObject = this.deserialize(location.hash.replace(/^./, ''));
+        return hashObject[key] || defaultValue;
     };
 
     global.utils = utils;

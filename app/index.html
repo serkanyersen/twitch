@@ -16,26 +16,41 @@
 <body>
 
   <div class="main-view">
+    <div class="header">
+      <img src="images/logo.png" height="40" align="left"> Stream Search
+    </div>
     <div class="search-bar">
-      <input type="text" placeholder="Type the game name" id="search-input">
+      <form action="#" method="GET" class="search-form">
+        <input type="text" name="query" placeholder="Search Streams" class="search-input">
+        <button class="search-button">Search</button>
+        <div class="result-details">
+          <div class="total">&nbsp;</div>
+          <div class="pagination">
+            <button class="previous-page" disabled="disabled">
+              <img src="images/back.png" alt="Previous">
+            </button>
+            <span class="page-status">1/1</span>
+            <button class="next-page" disabled="disabled">
+              <img src="images/forward.png" alt="Next">
+            </button>
+          </div>
+        </div>
+      </form>
+      <img src="images/loading.gif" class="loading-gif hidden">
     </div>
-    <div class="result-details">
-      <div class="total">Total Results</div>
-      <div class="pagination">&lt; 1/10 &gt;</div>
+    <div class="results-container">
+      <ul class="results"></ul>
     </div>
-    <ul class="results">
-
-    </ul>
   </div>
 
   <script type="text/template" id="stream-item">
     <li class="stream-item">
       <img src="{{ preview }}" alt="Preview Image" class="preview-image">
+      <img src="{{ logo }}" alt="Logo" class="logo-image">
       <a href="{{ link }}" class="stream-link">
         <h3 class="stream-title">{{ displayName }}</h3>
         <div class="stream-details">
           <span class="game-name">{{ gameName }}</span>
-          -
           <span class="viewer-count">{{ viewers }}</span>
         </div>
         <p class="stream-description">{{ description }}</p>
